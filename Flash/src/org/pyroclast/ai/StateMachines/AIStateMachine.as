@@ -49,6 +49,7 @@ package org.pyroclast.ai.StateMachines
 				actions = actions.concat( currentState.getExitActions() );
 				actions = actions.concat( transition.getActions() );
 				actions = actions.concat( transition.getState().getEntryActions() );
+				resetCurrentTransitions();
 				currentState = transition.getState();
 				resetCurrentTransitions();
 			}

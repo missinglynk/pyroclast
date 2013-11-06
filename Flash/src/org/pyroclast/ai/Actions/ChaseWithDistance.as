@@ -59,8 +59,8 @@ package org.pyroclast.ai.Actions
 		
 		public function execute():void 
 		{
-			var parentCenter = new FlxPoint( _parent.x + _parent.origin.x, _parent.y + _parent.origin.y );
-			var targetCenter = new FlxPoint( _target.x + _target.origin.x, _target.y + _target.origin.y );
+			var parentCenter:FlxPoint = new FlxPoint( _parent.x + _parent.origin.x, _parent.y + _parent.origin.y );
+			var targetCenter:FlxPoint = new FlxPoint( _target.x + _target.origin.x, _target.y + _target.origin.y );
 			
 			if ( FlxU.getDistance( parentCenter, targetCenter ) > _distance )
 			{

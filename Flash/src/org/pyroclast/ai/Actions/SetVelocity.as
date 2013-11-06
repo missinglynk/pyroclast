@@ -1,26 +1,25 @@
 package org.pyroclast.ai.Actions 
 {
 	import org.pyroclast.ai.Interfaces.IAIAction;
+	import org.flixel.FlxPoint;
 	import org.flixel.FlxSprite;
 	
 	/**
 	 * ...
-	 * @author ...
+	 * @author John Lynk
 	 */
-	public class PlayAnimationAction implements IAIAction 
+	public class SetVelocity implements IAIAction 
 	{
-
+		
 		private var _parent:FlxSprite;
-		private var _animation:String;
-		private var _hasFired:Boolean = false;
-		private var _loop:Boolean;
 		private var _expiryTime:int = 0;
 		private var _priority:int = 0;
-		public function PlayAnimationAction(parent:FlxSprite, animation:String, loop:Boolean) 
+		private var _velocity:FlxPoint;
+		
+		public function SetVelocity( _parent:FlxSprite, velocity:FlxPoint ) 
 		{
-			_parent = parent;
-			_animation = animation;
-			_loop = loop;
+			this._parent = _parent;
+			_velocity = velocity;
 		}
 		
 		/* INTERFACE org.pyroclast.ai.Interfaces.IAIAction */
@@ -47,27 +46,18 @@ package org.pyroclast.ai.Actions
 		
 		public function canDoBoth(otherAction:IAIAction):Boolean 
 		{
-			return  !( otherAction is PlayAnimationAction );
+			return true;
 		}
 		
 		public function isComplete():Boolean 
 		{
-			if ( _loop )
-			{
-				return true;
-			}
-			else if ( _hasFired )
-			{
-				return _parent.finished;
-			}
-			
 			return true;
 		}
 		
 		public function execute():void 
 		{
-			_parent.play( _animation );
-			_hasFired = true;
+			_parent.velocity.x = _velocity.x;
+			_parent.velocity.y = _velocity.y;
 		}
 		
 	}

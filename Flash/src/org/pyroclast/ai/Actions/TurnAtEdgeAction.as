@@ -56,7 +56,7 @@ package org.pyroclast.ai.Actions
 		
 		public function canDoBoth(otherAction:IAIAction):Boolean 
 		{
-			return false;
+			return true;
 		}
 		
 		public function isComplete():Boolean 
